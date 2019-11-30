@@ -115,6 +115,21 @@ public class MultiDimensionalArrays {
 								}
 						  };
 		
+		
+		int[][] a1 = new int[3][5];
+		int[][] a2 = new int[2][];
+		//int[][] a3 = new int[][3]; // ERROR
+		
+		// a1 refers to an array which further refers to 3 arrays, each array having 5 elements
+		// by default all the arrays will have value as ZERO
+		
+		// a2 is an array which refers to 2 arrays, whose size isn't defined
+		// so we can say:
+		a2[0] = new int[5];
+		a2[1] = new int[15];
+		
+		// a3 is an invalid syntax
+		
 	}
 
 }
