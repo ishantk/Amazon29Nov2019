@@ -3,6 +3,27 @@ package com.amazon.atlas.exceptions;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
+/*
+class CA{
+	
+	CA(){
+	
+	}
+
+	CA(int x){
+		
+	}
+}
+
+class CB extends CA{
+	CB(){
+		super(10);
+	}
+}
+
+CB cRef = new CB();
+*/
+
 // UNCHECKED Exception -> MyBankingException IS-A RuntimeException
 class MyBankingException extends RuntimeException{
 	MyBankingException(String message){
