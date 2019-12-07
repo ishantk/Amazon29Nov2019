@@ -68,3 +68,6 @@ public class Interfaces {
 //     1. Object to Object
 //     2. Class to Class
 //	   3. Interface to Interface
+
+// class CA extends CB implements Inf{}
+// class CA extends CB implements Inf1, Inf2{}
