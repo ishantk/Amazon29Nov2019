@@ -7,6 +7,8 @@ public class Product {
 	public String name;
 	public int price;
 	
+	public int quantity;
+	
 	public Product() {
 		
 	}
@@ -42,6 +44,13 @@ public class Product {
 	public void setPrice(int price) {
 		this.price = price;
 	}*/
+	
+	public void showProduct() {
+		System.out.println("===============================");
+		System.out.println(name+" | \u20b9"+price);
+		System.out.println("===============================");
+		System.out.println();
+	}
 
 	@Override
 	public String toString() {

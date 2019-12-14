@@ -2,6 +2,9 @@ package com.amazon.datastructures;
 
 import com.amazon.model.Node;
 
+// PS: https://www.codelike.in/animation/linked-list
+
+//class LinkedList<T>{
 class LinkedList{
 	
 	Node root;
@@ -91,6 +94,13 @@ class LinkedList{
 		
 	}
 	
+	// Assignment
+	boolean contains(int data) {
+		boolean check = false;
+		
+		return check;
+	}
+	
 	void deleteInBeginnig() {
 		
 		System.out.println(">> [DELETE] Node at "+root+" Data: "+root.data+" link is: "+root);
@@ -118,6 +128,22 @@ class LinkedList{
 		}
 		size--;
 	}
+	
+	@Override
+	public String toString() {
+		
+		StringBuffer buffer = new StringBuffer();
+		
+		Node temp = root;
+		while(temp.link !=null) {
+			buffer.append(temp.data+" ");
+			System.out.println(">> Data at Node "+temp+" is: "+temp.data);
+			temp = temp.link;
+		}
+		System.out.println(">> Data at Node "+temp+" is: "+temp.data);
+	
+		return buffer.toString();
+	}
 }
 
 public class LinkedListApp {
@@ -125,18 +151,23 @@ public class LinkedListApp {
 	public static void main(String[] args) {
 		
 		LinkedList list = new LinkedList();
-		System.out.println(">> list is: "+list);
+		
 		
 		System.out.println();
 		System.out.println("==Add Data==");
-		
 		
 		list.add(10);
 		list.add(20);
 		list.add(30);
 		list.add(40);
 		list.add(50);
+		
+		//list.list();
+		System.out.println(">> list is: "+list);
 
+		//System.out.println(">> LIST is: "+list);
+		
+		/*
 		System.out.println(">> [SIZE] "+list.size());
 		
 		System.out.println();
@@ -161,6 +192,7 @@ public class LinkedListApp {
 		System.out.println();
 		System.out.println("===List After Delete in END====");
 		list.list();
+		*/
 	}
 
 }
