@@ -14,9 +14,11 @@ class DirectedGraph<T>{
 	// We can now have any number of vertices :)
 	// Each Vertex shall be a Key and will maintain its Adjacency List
 	HashMap<T, LinkedList<T>> map;
+	HashMap<T, Boolean> visitedVertices;
 	
 	DirectedGraph() {
 		map = new HashMap<>();
+		visitedVertices = new HashMap<>();
 	}
 	
 	// Creating a Vertex will also add AdjacencyList to it
@@ -93,6 +95,59 @@ class DirectedGraph<T>{
 		
 	}
 	
+	void DFS(T vertex) {
+		
+		visitedVertices.put(vertex, true);
+		
+		// Print the Vertex which you have visited
+		System.out.print(vertex+"  ");
+		
+		// Fetch Adjacency List of the Vertex and thereafter visit those nodes
+		// map.get(vertex) -> Get LinkedList of Adjacent Vertices
+		for(T vtx : map.get(vertex)) {
+			// Check if Vertex is already visited dont re-visit
+			if(!visitedVertices.containsKey(vtx)) {
+				DFS(vtx); // Recursively keep on visiting all the adjacent vertices
+			}
+		}
+		
+	}
+	
+	void BFS(T vertex) {
+		
+		visitedVertices.put(vertex, true);
+		
+		// Create a Queue (Use LinkedList as Queue)
+		LinkedList<T> queue = new LinkedList<T>();
+		
+		// Add the Vertex to be processed in Queue
+		queue.add(vertex);
+		
+		// Iterate in Queue and keep on the vertices
+		while(queue.size()!=0) {
+			
+			vertex = queue.poll();
+			System.out.print(vertex+"  ");
+			
+			// Fetch Adjacency List of the Vertex and thereafter add those nodes in queue 
+			// Make a check if they are visited before or not
+			for(T vtx : map.get(vertex)) {
+				// Check if Vertex is already visited dont re-visit
+				if(!visitedVertices.containsKey(vtx)) {
+					visitedVertices.put(vtx, true);
+					queue.add(vtx);
+				}
+			}
+		}
+		
+	}
+	
+	void clearVisitedVertices() {
+		if(visitedVertices.size()>0) {
+			visitedVertices.clear();
+		}
+	}
+	
 }
  
 
@@ -118,6 +173,20 @@ public class DirectedGraphApp {
 		graph.addEdge(7, 6);
 		
 		System.out.println(graph);
+		
+		
+		graph.clearVisitedVertices();
+		System.out.println(">> MST with DFS Approach");
+		graph.DFS(0);
+		System.out.println();
+		System.out.println();
+		
+		graph.clearVisitedVertices();
+		System.out.println(">> MST with BFS Approach");
+		graph.BFS(0);
+		System.out.println();
+		System.out.println();
+		
 		
 		
 		User uRef0 = new User("0. Sia", "sia@example.com", "+91 99999 88888");
@@ -146,6 +215,18 @@ public class DirectedGraphApp {
 
 		
 		System.out.println(userGraph);
+
+		userGraph.clearVisitedVertices();
+		System.out.println(">> MST with DFS Approach");
+		userGraph.DFS(uRef0);
+		System.out.println();
+		System.out.println();
+		
+		userGraph.clearVisitedVertices();
+		System.out.println(">> MST with BFS Approach");
+		userGraph.BFS(uRef0);
+		System.out.println();
+		System.out.println();
 				
 		
 	}
